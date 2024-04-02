@@ -1,8 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Bookstore Nex†
+
+This is a frontend for a bookstore application built with Next.js
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+
+```bash
+git clone https://github.com/roby2409/my-bookstore-next.git
+cd my-bookstore-next
+```
+
+2. run the development server:
 
 ```bash
 npm run dev
