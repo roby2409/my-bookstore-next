@@ -13,6 +13,7 @@ import { UserEntity } from "@/types/user_entity";
 import { deleteCookie, getCookie, setCookie } from "@/utils/cookie-handling";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { formatPublishedAt } from "@/utils/app-helper";
 
 export interface OrderProps {
   orders: Orders[] | null;
@@ -73,7 +74,13 @@ export function LinkOrdersSection({ orders, user }: OrderProps) {
           const { book } = order; // Destructure book from order
           return (
             <CardOrder key={order.id}>
-              <CardOrderHeader>Order Id: {order.id}</CardOrderHeader>
+              <CardOrderHeader>
+                Order Id: {order.id}
+                <br />
+                <p className="text-black text-gray-400">
+                  Order Date <b>{formatPublishedAt(order.createdAt as Date)}</b>
+                </p>
+              </CardOrderHeader>
               <CardOrderContent className="flex flex-col items-center justify-center p-4">
                 <img
                   src={book.coverImage}

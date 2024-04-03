@@ -5,4 +5,6 @@ export interface Books {
   coverImage: string;
   point: number;
   tags: string[];
+  createdAt: Date;
+  updatedAt: Date;
 }
