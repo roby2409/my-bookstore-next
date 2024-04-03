@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Orders } from "@/types/orders";
 import { LinkOrdersSection } from "@/components/sections/ListOrdersSection";
 import { getCookie } from "@/utils/cookie-handling";
+import { LoadMoreMyOrders } from "./load-more-myorders";
 
 interface MyOrdersProps {
   user: UserEntity | null;
@@ -68,6 +69,7 @@ export default function MyOrders({ user }: MyOrdersProps) {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               <LinkOrdersSection orders={orders} user={user} />
+              <LoadMoreMyOrders user={user} />
             </div>
           )}
         </div>
