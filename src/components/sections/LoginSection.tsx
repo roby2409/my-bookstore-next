@@ -45,10 +45,13 @@ export default function LoginSection() {
         const token = data.token as string;
         setCookie("user", JSON.stringify(user));
         setCookie("token", token);
-        toast.success(`success`, {
+        toast.success(`Welcome bro ${user.name} your point is ${user.point}`, {
           position: "top-left",
+          autoClose: 400, // Close after 2 seconds
+          onClose: () => {
+            router.push("/dashboard");
+          },
         });
-        router.push("/dashboard");
       } else if (response.status === 422) {
         setErrors(data);
       } else {
