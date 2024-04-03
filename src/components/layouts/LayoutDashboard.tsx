@@ -1,5 +1,6 @@
 import { ToastContainer, toast } from "react-toastify";
 import NavbarSection from "@/components/organisms/Navbar";
+import FooterSection from "../organisms/Footer";
 export const LayoutDashboard: React.FC<{
   children?: React.ReactNode;
 }> = ({ children }) => {
@@ -11,6 +12,7 @@ export const LayoutDashboard: React.FC<{
           {children}
           <ToastContainer />
         </main>
+        <FooterSection />
       </div>
     </div>
   );
