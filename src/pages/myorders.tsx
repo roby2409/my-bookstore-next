@@ -7,16 +7,13 @@ import { useEffect, useState } from "react";
 import { Orders } from "@/types/orders";
 import { LinkOrdersSection } from "@/components/sections/ListOrdersSection";
 import { getCookie } from "@/utils/cookie-handling";
-import { LoadMoreMyOrders } from "./load-more-myorders";
+import LoadMoreMyOrders from "./load-more-myorders";
 
 interface MyOrdersProps {
   user: UserEntity | null;
 }
 
 export default function MyOrders({ user }: MyOrdersProps) {
-  if (!user) {
-    return null;
-  }
   const [orders, setOrders] = useState<Orders[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -49,8 +46,15 @@ export default function MyOrders({ user }: MyOrdersProps) {
       setOrders(ordersData);
       setLoading(false);
     };
-    getOrders();
-  }, []);
+
+    if (user) {
+      getOrders();
+    }
+  }, [user]); // Include user in the dependency array
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <LayoutDashboard>

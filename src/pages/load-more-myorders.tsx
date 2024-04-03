@@ -3,20 +3,18 @@ import { LinkOrdersSection } from "@/components/sections/ListOrdersSection";
 import { Orders } from "@/types/orders";
 import { UserEntity } from "@/types/user_entity";
 import { getCookie } from "@/utils/cookie-handling";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 interface LoadMoreMyOrdersProps {
   user: UserEntity | null;
 }
 
-export function LoadMoreMyOrders({ user }: LoadMoreMyOrdersProps) {
-  if (!user) {
-    return null;
-  }
+export default function LoadMoreMyOrders({ user }: LoadMoreMyOrdersProps) {
   const [orders, setOrders] = useState<Orders[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
 
   const { ref, inView } = useInView();
 
@@ -49,27 +47,38 @@ export function LoadMoreMyOrders({ user }: LoadMoreMyOrdersProps) {
     }
   };
 
-  const loadMoreOrders = async () => {
-    if (!hasMore) {
+  const loadMoreOrders = useCallback(async () => {
+    if (!hasMore || isFetching) {
       return;
     }
+
+    setIsFetching(true);
+
     // Once the page 8 is reached repeat the process all over again.
-    await delay(2000);
+    await delay(1000);
     const nextPage = (page % 7) + 1;
     const newProducts = (await fetchOrders(nextPage)) ?? [];
+
     // Stop loading more orders if the response is empty
     if (newProducts.length === 0) {
-      return;
+      setHasMore(false);
+    } else {
+      setOrders((prevProducts: Orders[]) => [...prevProducts, ...newProducts]);
+      setPage(nextPage);
     }
-    setOrders((prevProducts: Orders[]) => [...prevProducts, ...newProducts]);
-    setPage(nextPage);
-  };
+
+    setIsFetching(false);
+  }, [hasMore, page, isFetching]);
 
   useEffect(() => {
     if (inView) {
       loadMoreOrders();
     }
-  }, [inView]);
+  }, [inView, user, loadMoreOrders]);
+
+  if (!user) {
+    return;
+  }
 
   return (
     <>

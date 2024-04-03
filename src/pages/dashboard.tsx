@@ -12,9 +12,6 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ user }: DashboardProps) {
-  if (!user) {
-    return null;
-  }
   const [books, setBooks] = useState<Books[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -36,8 +33,12 @@ export default function Dashboard({ user }: DashboardProps) {
       setBooks(booksData);
       setLoading(false);
     };
+
     getBooks();
-  }, []);
+  }, [user]);
+  if (!user) {
+    return;
+  }
 
   return (
     <LayoutDashboard>
