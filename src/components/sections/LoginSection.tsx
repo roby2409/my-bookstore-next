@@ -69,6 +69,13 @@ export default function LoginSection() {
 
   return (
     <LayoutLogin>
+      <div className="flex flex-col items-center justify-center column">
+        <h2 className="mt-20 text-2xl font-extrabold tracking-tight text-slate-900">
+          Welcome to Your Amazon books
+        </h2>
+        <p className="text-slate-900 mb-10">choose your books what you like</p>
+      </div>
+
       <div className="w-full bg-white rounded shadow-lg p-8 m-4 md:max-w-sm md:mx-auto">
         <span className="block w-full text-xl uppercase font-bold mb-4">
           Login
