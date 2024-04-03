@@ -15,6 +15,7 @@ export default function FooterSection() {
         <div className="mb-6 flex gap-3 sm:mb-0">
           {navlinks?.map((nav) => (
             <Link
+              key={nav.id}
               className=" text-dark hover:text-gray-800 hover:underline "
               rel="noopener noreferrer"
               href={nav.to}
