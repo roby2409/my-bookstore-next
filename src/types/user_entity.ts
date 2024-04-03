@@ -1,8 +1,10 @@
 export interface UserEntity {
     id: number;
     name: string;
+    point: number;
     email: string;
-    email_verified_at: string;
-    created_at: string;
-    updated_at: string;
+    address: string;
+    password: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
