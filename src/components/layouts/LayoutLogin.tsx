@@ -1,5 +1,5 @@
 import { ToastContainer, toast } from "react-toastify";
-export const Layout: React.FC<{
+export const LayoutLogin: React.FC<{
   children?: React.ReactNode;
 }> = ({ children }) => {
   return (
