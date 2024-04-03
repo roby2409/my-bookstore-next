@@ -42,8 +42,11 @@ export default function Dashboard({ user }: DashboardProps) {
   return (
     <LayoutDashboard>
       <div className="w-full bg-white">
-        <Text>
+        <h2 className="text-xl text-slate-950">
           Welcome, <b>{user.name}</b> choose your book
+        </h2>
+        <Text className="text-sm text-lime-600">
+          😁 Your Point still <b>{user.point}</b>
         </Text>
         <div className="container mx-auto bg-white">
           <h1 className="text-3xl font-bold mb-4 text-center">
