@@ -15,7 +15,8 @@
     "react-toastify": "^10.0.5",
     "react-icons": "^4.3.1",
     "@headlessui/react": "^1.6.4",
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "clsx": "^1.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",
