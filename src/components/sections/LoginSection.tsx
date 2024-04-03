@@ -28,7 +28,7 @@ export default function LoginSection() {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BACKEND}/api/login`,
+        `${process.env.NEXT_PUBLIC_API_BACKEND}/login`,
         {
           method: "POST",
           headers: {
