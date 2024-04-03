@@ -2,7 +2,7 @@ import * as React from "react";
 
 import cn from "classnames";
 
-const CardBook = React.forwardRef<
+const CardOrder = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -15,21 +15,24 @@ const CardBook = React.forwardRef<
     {...props}
   />
 ));
-CardBook.displayName = "Card";
+CardOrder.displayName = "Card";
 
-const CardBookHeader = React.forwardRef<
+const CardOrderHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    className={cn(
+      "flex flex-col space-y-1.5 p-2 text-lime-400 underline",
+      className
+    )}
     {...props}
   />
 ));
-CardBookHeader.displayName = "CardHeader";
+CardOrderHeader.displayName = "CardHeader";
 
-const CardBookTitle = React.forwardRef<
+const CardOrderTitle = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
@@ -42,29 +45,29 @@ const CardBookTitle = React.forwardRef<
     {...props}
   />
 ));
-CardBookTitle.displayName = "CardTitle";
+CardOrderTitle.displayName = "CardTitle";
 
-const CardBookDescription = React.forwardRef<
+const CardOrderDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-sm text-muted-foreground text-black", className)}
     {...props}
   />
 ));
-CardBookDescription.displayName = "CardDescription";
+CardOrderDescription.displayName = "CardDescription";
 
-const CardBookContent = React.forwardRef<
+const CardOrderContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
 ));
-CardBookContent.displayName = "CardContent";
+CardOrderContent.displayName = "CardContent";
 
-const CardBookFooter = React.forwardRef<
+const CardOrderFooter = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -74,13 +77,13 @@ const CardBookFooter = React.forwardRef<
     {...props}
   />
 ));
-CardBookFooter.displayName = "CardFooter";
+CardOrderFooter.displayName = "CardFooter";
 
 export {
-  CardBook,
-  CardBookHeader,
-  CardBookFooter,
-  CardBookTitle,
-  CardBookDescription,
-  CardBookContent,
+  CardOrder,
+  CardOrderHeader,
+  CardOrderFooter,
+  CardOrderTitle,
+  CardOrderDescription,
+  CardOrderContent,
 };
